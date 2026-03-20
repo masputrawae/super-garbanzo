@@ -8,7 +8,8 @@ export const SITE: SiteType = {
   locale: 'id-ID',
   author: {
     name: 'John Doe',
-    email: 'johndoe@example.com'
+    email: 'johndoe@example.com',
+    twitter: "@johndoe"
   },
   copyright: {
     license: 'All Rights Reserved.',
@@ -70,5 +71,30 @@ export const SOCIAL_LINKS: SocialLinkType[] = [
     icon: 'bi:github',
     href: 'https://github.com',
     target: '_blank'
+  }
+]
+
+export const FAVICONS: HTMLAttributes<'link'>[] = [
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/apple-touch-icon.png'
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/favicon-32x32.png'
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/favicon-16x16.png'
+  },
+  {
+    rel: 'icon',
+    type: 'image/x-icon',
+    href: '/favicon.ico'
   }
 ]

@@ -1,0 +1,19 @@
+---
+import { ClientRouter } from 'astro:transitions'
+import { Font } from 'astro:assets'
+import { SITE } from '../consts'
+---
+
+<html lang={SITE.langCode} class="font-sans" data-theme="light">
+  <head>
+    <script src="../assets/scripts/switch-theme.ts"></script>
+    <slot name="head" />
+    <ClientRouter />
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-poppins" preload />
+    <Font cssVariable="--font-mono" />
+  </head>
+  <body>
+    <slot name="body" />
+  </body>
+</html>
