@@ -1,0 +1,19 @@
+---
+import { HEADER_LINKS } from '../consts'
+import HeaderLink from './HeaderLink.astro'
+---
+
+<nav>
+  <button> </button>
+
+  <ul>
+    <button> = </button>
+    {
+      HEADER_LINKS.map((item) => (
+        <li>
+          <HeaderLink {...item}>{item.name}</HeaderLink>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'a'>
+const { href, class: className } = Astro.props
+
+const base = import.meta.env.BASE_URL
+const pathname = Astro.url.pathname.replace(base, '')
+const subpath = pathname.match(/[^\/]+/g)
+const isActive = href === pathname || href === base + (subpath?.[0] || '')
+---
+
+<a {...Astro.props} class:list={[className, { 'text-purple-600 dark:text-purple-400': isActive }]}>
+  <slot />
+</a>

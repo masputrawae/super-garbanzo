@@ -2,6 +2,14 @@
 import { ClientRouter } from 'astro:transitions'
 import { Font } from 'astro:assets'
 import { SITE } from '../consts'
+
+import HeaderWrapper from '../components/HeaderWrapper.astro'
+import HeaderTitle from '../components/HeaderTitle.astro'
+import HeaderNav from '../components/HeaderNav.astro'
+import MainWrapper from '../components/MainWrapper.astro'
+import FooterWrapper from '../components/FooterWrapper.astro'
+import FooterCopyright from '../components/FooterCopyright.astro'
+import FooterSocial from '../components/FooterSocial.astro'
 ---
 
 <html lang={SITE.langCode} class="font-sans" data-theme="light">
@@ -14,6 +22,16 @@ import { SITE } from '../consts'
     <Font cssVariable="--font-mono" />
   </head>
   <body>
-    <slot name="body" />
+    <HeaderWrapper>
+      <HeaderTitle />
+      <HeaderNav />
+    </HeaderWrapper>
+    <MainWrapper>
+      <slot name="body" />
+    </MainWrapper>
+    <FooterWrapper>
+      <FooterSocial />
+      <FooterCopyright />
+    </FooterWrapper>
   </body>
 </html>

@@ -1,0 +1,14 @@
+---
+import { SOCIAL_LINKS } from '../consts'
+---
+
+<nav class="flex items-center justify-center">
+  {
+    SOCIAL_LINKS.map((i) => (
+      <a {...i}>
+        {i.icon}
+        <span class="sr-only">{i.name}</span>
+      </a>
+    ))
+  }
+</nav>
