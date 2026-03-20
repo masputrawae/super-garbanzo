@@ -1,15 +1,19 @@
 // @ts-check
 import { defineConfig, fontProviders, passthroughImageService } from 'astro/config';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
   base: "/",
+
   image: {
     service: passthroughImageService(),
     domains: ['res.cloudinary.com'],
     remotePatterns: [{ protocol: 'https' }]
   },
+
   fonts: [
     {
       provider: fontProviders.google(),
@@ -45,6 +49,7 @@ export default defineConfig({
       weights: [400, 700]
     }
   ],
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -52,5 +57,9 @@ export default defineConfig({
         dark: 'github-dark'
       }
     }
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
