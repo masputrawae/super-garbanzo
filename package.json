@@ -15,9 +15,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.7",
+    "astro-icon": "^1.1.5",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "@iconify-json/bi": "^1.2.7",
     "@tailwindcss/typography": "^0.5.19",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
