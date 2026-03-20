@@ -1,12 +1,12 @@
 // @ts-check
-import { defineConfig, fontProviders, passthroughImageService } from 'astro/config';
+import { defineConfig, fontProviders, passthroughImageService } from 'astro/config'
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
-  base: "/",
+  site: 'https://example.com',
+  base: '/',
 
   image: {
     service: passthroughImageService(),
@@ -17,14 +17,14 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "Poppins",
-      cssVariable: "--font-poppins",
+      name: 'Poppins',
+      cssVariable: '--font-poppins',
       weights: [400, 500, 700]
     },
     {
       provider: fontProviders.google(),
-      name: "Noto Sans",
-      cssVariable: "--font-sans",
+      name: 'Noto Sans',
+      cssVariable: '--font-sans',
       weights: [400, 600, 700],
       fallbacks: [
         'ui-sans-serif',
@@ -38,14 +38,14 @@ export default defineConfig({
     },
     {
       provider: fontProviders.google(),
-      name: "Noto Serif",
-      cssVariable: "--font-serif",
-      weights: [400, 700],
+      name: 'Noto Serif',
+      cssVariable: '--font-serif',
+      weights: [400, 700]
     },
     {
       provider: fontProviders.google(),
-      name: "JetBrains Mono",
-      cssVariable: "--font-mono",
+      name: 'JetBrains Mono',
+      cssVariable: '--font-mono',
       weights: [400, 700]
     }
   ],
@@ -60,6 +60,6 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
-  },
-});
+    plugins: [tailwindcss()]
+  }
+})
