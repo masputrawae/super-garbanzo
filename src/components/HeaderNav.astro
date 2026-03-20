@@ -1,19 +1,32 @@
 ---
+import { Icon } from 'astro-icon/components'
 import { HEADER_LINKS } from '../consts'
 import HeaderLink from './HeaderLink.astro'
 ---
 
 <nav>
-  <button> </button>
+  <div class="flex items-center justify-center">
+    <button>
+      <Icon name="bi:search" />
+      <span class="sr-only">Search...</span>
+    </button>
 
-  <ul>
-    <button> = </button>
-    {
-      HEADER_LINKS.map((item) => (
-        <li>
-          <HeaderLink {...item}>{item.name}</HeaderLink>
-        </li>
-      ))
-    }
-  </ul>
+    <button>
+      <Icon id="i-open" name="bi:list" />
+      <Icon id="i-close" name="bi:x" class="hidden" />
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+  </div>
+
+  <div id="menu">
+    <ul>
+      {
+        HEADER_LINKS.map((item) => (
+          <li>
+            <HeaderLink {...item}>{item.name}</HeaderLink>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </nav>

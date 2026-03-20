@@ -10,6 +10,7 @@ import MainWrapper from '../components/MainWrapper.astro'
 import FooterWrapper from '../components/FooterWrapper.astro'
 import FooterCopyright from '../components/FooterCopyright.astro'
 import FooterSocial from '../components/FooterSocial.astro'
+import HeaderSearch from '../components/HeaderSearch.astro'
 ---
 
 <html lang={SITE.langCode} class="font-sans" data-theme="light">
@@ -24,6 +25,7 @@ import FooterSocial from '../components/FooterSocial.astro'
   <body>
     <HeaderWrapper>
       <HeaderTitle />
+      <HeaderSearch />
       <HeaderNav />
     </HeaderWrapper>
     <MainWrapper>

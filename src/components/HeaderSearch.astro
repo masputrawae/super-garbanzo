@@ -1,0 +1,12 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<form action="search">
+  <label for="search" class="sr-only">Search...</label>
+  <input type="search" name="search" id="search" placeholder="Search content..." />
+  <button type="submit">
+    <Icon name="bi:search" />
+    <span class="sr-only">Search...</span>
+  </button>
+</form>
