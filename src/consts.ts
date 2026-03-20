@@ -9,7 +9,7 @@ export const SITE: SiteType = {
   author: {
     name: 'John Doe',
     email: 'johndoe@example.com',
-    twitter: "@johndoe"
+    twitter: '@johndoe'
   },
   copyright: {
     license: 'All Rights Reserved.',
