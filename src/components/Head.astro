@@ -1,0 +1,89 @@
+---
+import '../styles/global.css'
+import { FAVICONS, SITE } from '../consts'
+
+type Props = {
+  pageTitle: string
+  pageType?: 'article' | 'website'
+  description?: string
+  pubDate?: Date
+  updatedDate?: Date
+  image?: string
+  keywords?: string[]
+  wordCount?: number
+}
+
+const { pageTitle, pageType, description, pubDate, updatedDate, image, keywords, wordCount } =
+  Astro.props
+
+const baseURL = import.meta.env.BASE_URL
+const pathname = Astro.url.pathname
+const title = pathname == baseURL ? SITE.title : `${SITE.title} | ${pageTitle}`
+const canonicalURL = new URL(pathname, Astro.site)
+const searchJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': pageType === 'article' ? 'Article' : 'WebPage',
+  headline: title,
+  description: description,
+  image: image ? new URL(image, Astro.site) : undefined,
+  datePublished: pubDate?.toISOString(),
+  dateModified: updatedDate?.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: SITE.author.name
+  }
+}
+---
+
+{/*----- Base Meta Tags -----*/}
+<title>{title}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+
+<meta name="generator" content={Astro.generator} />
+<meta name="author" content={SITE.author.name} />
+
+<link rel="canonical" href={canonicalURL} />
+
+{/*----- Base Meta Tags -----*/}
+{description && <meta name="description" content={description} />}
+{keywords && <meta name="keywords" content={keywords.join(',')} />}
+
+{/*----- Open Graph / Facebook -----*/}
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:site_name" content={SITE.title} />
+<meta property="og:title" content={title} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:type" content={pageType ?? 'website'} />
+
+{description && <meta property="og:description" content={description} />}
+{pubDate && <meta property="og:published_time" content={pubDate.toISOString()} />}
+{updatedDate && <meta property="og:modified_time" content={updatedDate.toISOString()} />}
+{keywords && keywords.map((keyword) => <meta property="article:tag" content={keyword} />)}
+{image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+{image && <meta property="og:image:alt" content={title} />}
+
+{/*----- Twitter Cards -----*/}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:site" content={SITE.author.twitter} />
+<meta name="twitter:creator" content={SITE.author.twitter} />
+
+{image && <meta property="twitter:image" content={new URL(image, Astro.site)} />}
+{description && <meta property="twitter:description" content={description} />}
+
+{/*----- Schema -----*/}
+<meta itemprop="name" content={title} />
+{description && <meta itemprop="description" content={description} />}
+{pubDate && <meta itemprop="datePublished" content={pubDate.toISOString()} />}
+{updatedDate && <meta itemprop="dateModified" content={updatedDate.toISOString()} />}
+{keywords && <meta itemprop="keywords" content={keywords.join(',')} />}
+{image && <meta itemprop="image" content={new URL(image, Astro.site)} />}
+{wordCount && <meta itemprop="wordCount" content={wordCount.toString()} />}
+
+{/*----- Favicons -----*/}
+{FAVICONS.map((f) => <link {...f} />)}
+
+{/*----- Search Json-LD -----*/}
+<script type="application/ld+json" is:inline set:html={JSON.stringify(searchJsonLd)} />
